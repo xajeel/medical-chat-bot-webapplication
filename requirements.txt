@@ -1,0 +1,6 @@
+tiktoken
+pypdf
+langchain_community
+pinecone
+langchain-pinecone 
+pinecone-notebooks
