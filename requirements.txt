@@ -4,3 +4,4 @@ langchain_community
 pinecone
 langchain-pinecone 
 pinecone-notebooks
+python-dotenv
