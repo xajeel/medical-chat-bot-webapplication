@@ -5,3 +5,4 @@ pinecone
 langchain-pinecone 
 pinecone-notebooks
 python-dotenv
+langchain-groq

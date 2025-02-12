@@ -7,7 +7,7 @@ import os
 load_dotenv()
 api_key = os.environ("PINECONE_API_KEY")
 
-def create_database(index_name):
+def create_database(index_name, dimension, metric="cosine"):
     pc = Pinecone(api_key=api_key)
 
     # Creating an Index in the Pinecone with name of 'medical'
@@ -15,8 +15,8 @@ def create_database(index_name):
 
     pc.create_index(
         name=index_name,
-        dimension=768, 
-        metric="cosine",
+        dimension=dimension, 
+        metric=metric,
         spec=ServerlessSpec(
             cloud="aws",
             region="us-east-1"
