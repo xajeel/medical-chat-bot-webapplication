@@ -6,3 +6,6 @@ langchain-pinecone
 pinecone-notebooks
 python-dotenv
 langchain-groq
+sentence-transformers
+langchain-huggingface
+

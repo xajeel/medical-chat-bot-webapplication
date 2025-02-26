@@ -1,4 +1,5 @@
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
+import sentence_transformers
 
 def get_embedder(model="sentence-transformers/all-mpnet-base-v2"):
     hf = HuggingFaceEmbeddings(
