@@ -10,7 +10,7 @@ from langchain.chains import create_retrieval_chain
 
 load_dotenv()
 
-def chain(retriever):
+def qna_model(retriever):
 
     llm = ChatGroq(
         model="llama-3.3-70b-versatile",
@@ -28,8 +28,6 @@ def chain(retriever):
         ("human", "{input}")
         ]
     )
-
-
     qna = create_stuff_documents_chain(llm, template)
     chain = create_retrieval_chain(retriever, qna)
 

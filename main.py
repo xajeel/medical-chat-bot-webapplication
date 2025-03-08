@@ -3,7 +3,7 @@ from src.loader import load_pdf
 from src.splitter import split_document
 from src.embedder import get_embedder
 from src.loadData import loading_data
-from src.model import chain
+from src.model import qna_model
 
 
 PATH = ""
@@ -17,13 +17,13 @@ async def main():
     print("*** Loading Data ***")
     retriever = loading_data(INDEX, embedder)
     print("*** Creating Chain ***")
-    model = chain(retriever)
-    return model
+    chain = qna_model(retriever)
+    return chain
 
-def answer_question(question, model):
-    ans = model.invoke({"input": question})
-    return print(ans['answer'])
+# if model is None:
+#     model = asyncio.run(main())
 
-if __name__ == "__main__":
-    model = asyncio.run(main())
-    answer_question("What is pcos", model)
+# def answer_question(question, model=model):
+#     ans = model.invoke({"input": question})
+#     return print(ans['answer'])
+    
