@@ -1,13 +1,27 @@
-from fastapi import FastAPI #  class
+from fastapi import FastAPI , Request#  class
 from pydantic import BaseModel
 import uvicorn
 from main import main
 import asyncio
+from fastapi.templating import Jinja2Templates
+from fastapi.middleware.cors import CORSMiddleware
+
+
 
 class Question(BaseModel):
     question: str
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For development only; restrict in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+templates = Jinja2Templates(directory="templates")
 
 
 # ====
@@ -20,10 +34,9 @@ def question(question):
 
 # ====
 
-
 @app.get('/')
-def home():
-    return {"message": "Hello World"}
+def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.post('/question/')
 def ask(q: Question):

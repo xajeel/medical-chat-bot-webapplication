@@ -19,11 +19,4 @@ async def main():
     print("*** Creating Chain ***")
     chain = qna_model(retriever)
     return chain
-
-# if model is None:
-#     model = asyncio.run(main())
-
-# def answer_question(question, model=model):
-#     ans = model.invoke({"input": question})
-#     return print(ans['answer'])
     
